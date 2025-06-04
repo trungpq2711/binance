@@ -1,53 +1,43 @@
 # Binance Auto Trader
 
-This project provides a minimal example of how to create an automated trading bot
-for [Binance](https://www.binance.com/). It uses the
-[`python-binance`](https://github.com/sammchardy/python-binance) library and
-implements a simple moving average crossover strategy.
+This project provides a minimal example of how to create an automated trading bot for [Binance](https://www.binance.com/) using PHP. It implements a simple moving average crossover strategy and exposes both a command line script and a tiny web interface.
 
 ## Setup
 
-1. Install Python 3.8+ and create a virtual environment (optional).
-2. Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-3. Create a Binance API key and secret:
-
-   - Log in to your Binance account and open **API Management** from the profile menu.
-   - Click **Create API**, give it a label and complete any security verification.
-   - Copy the generated **API Key** and **Secret** (the secret is displayed only once).
+1. Install PHP 8 with the cURL extension enabled.
+2. Create a Binance API key and secret:
+   - Log in to your Binance account and open **API Management**.
+   - Click **Create API**, give it a label and complete the verification steps.
+   - Copy the generated **API Key** and **Secret** (the secret is shown only once).
    - Enable trading permissions if you intend to place real orders.
 
-   Then export them as environment variables:
-
-   ```bash
-   export BINANCE_API_KEY="<your api key>"
-   export BINANCE_API_SECRET="<your api secret>"
-   ```
-
-## Running the bot
-
-The example strategy is defined in `autotrader/bot.py`. Run it with Python:
+Set the credentials as environment variables when running the command line script:
 
 ```bash
-python -m autotrader.bot
+export BINANCE_API_KEY="<your api key>"
+export BINANCE_API_SECRET="<your api secret>"
 ```
 
-The script fetches recent market data for BTC/USDT, calculates two moving
-averages, and executes a market order when they cross.
+## Running the CLI bot
 
-To try the graphical interface where you can enter your API credentials and
-trading parameters, run:
+Execute the strategy from the terminal:
 
 ```bash
-python -m autotrader.ui
+php trader.php
 ```
+
+The script fetches recent BTC/USDT prices and places a market buy or sell order when the short moving average crosses the long one.
+
+## Web interface
+
+A minimal form is provided in `ui.php` so you can enter your API credentials and strategy parameters via a browser. Start a local server with:
+
+```bash
+php -S localhost:8000 ui.php
+```
+
+Open <http://localhost:8000> and fill in the form to run the strategy once.
 
 ## Disclaimer
 
-This example is for educational purposes only. Trading cryptocurrencies involves
-risk. Use at your own discretion and test thoroughly before trading with real
-funds.
+This example is for educational purposes only. Trading cryptocurrencies involves risk. Test thoroughly and use at your own discretion before trading with real funds.
