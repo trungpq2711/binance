@@ -39,6 +39,13 @@ python -m autotrader.bot
 The script fetches recent market data for BTC/USDT, calculates two moving
 averages, and executes a market order when they cross.
 
+To try the graphical interface where you can enter your API credentials and
+trading parameters, run:
+
+```bash
+python -m autotrader.ui
+```
+
 ## Disclaimer
 
 This example is for educational purposes only. Trading cryptocurrencies involves
