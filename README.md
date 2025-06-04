@@ -30,7 +30,7 @@ The script fetches recent BTC/USDT prices and places a market buy or sell order 
 
 ## Web interface
 
-A minimal form is provided in `ui.php` so you can enter your API credentials and strategy parameters via a browser. Credentials are stored in the session so you don't need to retype them on each request and can be cleared with the **Clear Credentials** button. Start a local server with:
+A Bootstrap-based form is provided in `ui.php` so you can enter your API credentials and strategy parameters via a browser. It pulls Bootstrap 5 from a CDN for styling. Credentials are stored in the session so you don't need to retype them on each request and can be cleared with the **Clear Credentials** button. Start a local server with:
 
 ```bash
 php -S localhost:8000 ui.php

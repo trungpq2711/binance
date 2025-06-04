@@ -45,38 +45,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Binance Trading Bot</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 2em; }
-        label { display: block; margin-top: 0.5em; }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
-<body>
-    <h1>Binance Trading Bot</h1>
-    <form method="post">
-        <label>API Key
-            <input type="text" name="api_key" size="40" required value="<?= htmlspecialchars($apiKey) ?>">
-        </label>
-        <label>API Secret
-            <input type="password" name="api_secret" size="40" required value="<?= htmlspecialchars($secret) ?>">
-        </label>
-        <label>Symbol
-            <input type="text" name="symbol" value="<?= htmlspecialchars($symbol) ?>">
-        </label>
-        <label>Short MA
-            <input type="number" name="ma_short" value="<?= htmlspecialchars($maShort) ?>">
-        </label>
-        <label>Long MA
-            <input type="number" name="ma_long" value="<?= htmlspecialchars($maLong) ?>">
-        </label>
-        <label>Quantity
-            <input type="text" name="quantity" value="<?= htmlspecialchars($quantity) ?>">
-        </label>
-        <button type="submit">Start Trading</button>
+<body class="container py-4">
+    <h1 class="mb-4">Binance Trading Bot</h1>
+    <form method="post" class="mb-3">
+        <div class="mb-3">
+            <label class="form-label">API Key</label>
+            <input type="text" class="form-control" name="api_key" required value="<?= htmlspecialchars($apiKey) ?>">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">API Secret</label>
+            <input type="password" class="form-control" name="api_secret" required value="<?= htmlspecialchars($secret) ?>">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Symbol</label>
+            <input type="text" class="form-control" name="symbol" value="<?= htmlspecialchars($symbol) ?>">
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Short MA</label>
+                <input type="number" class="form-control" name="ma_short" value="<?= htmlspecialchars($maShort) ?>">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Long MA</label>
+                <input type="number" class="form-control" name="ma_long" value="<?= htmlspecialchars($maLong) ?>">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Quantity</label>
+            <input type="text" class="form-control" name="quantity" value="<?= htmlspecialchars($quantity) ?>">
+        </div>
+        <button type="submit" class="btn btn-primary">Start Trading</button>
     </form>
-    <form method="post" style="margin-top:1em;">
+    <form method="post" class="mb-3">
         <input type="hidden" name="clear" value="1">
-        <button type="submit">Clear Credentials</button>
+        <button type="submit" class="btn btn-secondary">Clear Credentials</button>
     </form>
-    <pre><?= htmlspecialchars($message) ?></pre>
+    <?php if ($message): ?>
+        <pre class="bg-light p-3 border rounded"><?= htmlspecialchars($message) ?></pre>
+    <?php endif; ?>
 </body>
 </html>
